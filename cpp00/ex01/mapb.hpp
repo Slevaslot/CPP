@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapb.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aproust <aproust@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pdosso-d <pdosso-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:17:22 by pdosso-d          #+#    #+#             */
-/*   Updated: 2023/12/20 18:37:53 by aproust          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:18:07 by pdosso-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,32 @@
 using namespace std;
 
 class Contact {
-	public:
-	string	get_string(int nb);
-	void	set_data(string *str);
-	string	data[5];
 	private:
+	string	data[5];
+
+  public:
+    // Getter
+    string getData(int i) {
+      return data[i];
+    }
+
+    //Setter
+    void setData(string str, int i) {
+    	data[i] = str;
+    }
 };
 
 class PhoneBook {
-	public:
-	Contact get_contact(int nb);
 	private:
 	Contact contacts[8];
+
+	public:
+	int	phonebookstart();
+	void searchContact();
+
+	Contact getContact(int i) {
+		return contacts[i];
+	}
 };
 
 #endif
