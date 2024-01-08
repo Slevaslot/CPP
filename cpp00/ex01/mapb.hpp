@@ -39,7 +39,7 @@ class PhoneBook {
 
 	public:
 	int	phonebookstart();
-	void searchContact();
+	int	searchContact();
 
 	Contact getContact(int i) {
 		return contacts[i];

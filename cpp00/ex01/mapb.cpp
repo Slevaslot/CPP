@@ -1,5 +1,17 @@
 #include "mapb.hpp"
 
+int	getline_protected(string *test)
+{
+	string ok;
+	getline(cin, *test);
+	if (std::cin.eof())
+		return (0);
+	ok = *test;
+	if (ok.empty())
+		return (0);
+	return (1);
+}
+
 void printContact(Contact contact)
 {
 	int i = -1;
@@ -8,7 +20,7 @@ void printContact(Contact contact)
 		cout << contact.getData(i) << endl;
 }
 
-void	PhoneBook::searchContact()
+int		PhoneBook::searchContact()
 {
 	int i;
 	int j;
@@ -39,24 +51,15 @@ void	PhoneBook::searchContact()
 		cout << endl;
 	}
 	cout << "ENTER INDEX : ";
-	getline(cin, index);
+	if (!getline_protected(&index))
+		return (0);
 	if (index.length() == 1 && index[0] >= '0' && index[0] <= '7')
 		printContact(this->contacts[index[0] - '0']);
 	else
 		cout << "INCORRECT INDEX" << endl;
-}
-
-int	getline_protected(string *test)
-{
-	string ok;
-	getline(cin, *test);
-	if (std::cin.eof())
-		return (0);
-	ok = *test;
-	if (ok.empty())
-		return (0);
 	return (1);
 }
+
 
 int	PhoneBook::phonebookstart()
 {
@@ -68,7 +71,8 @@ int	PhoneBook::phonebookstart()
 	cout << "My Awesome PhoneBook" << endl;
 	while (1)
 	{
-		getline(cin, x);
+		if (!getline_protected(&x))
+				return (0);
 		if (x == "ADD")
 		{
 			cout << "FIRST NAME : ";
@@ -95,7 +99,8 @@ int	PhoneBook::phonebookstart()
 		}
 		if (x == "SEARCH")
 		{
-			searchContact();
+			if (!searchContact())
+				return (0);
 		}
 		if (x == "EXIT")
 		{
