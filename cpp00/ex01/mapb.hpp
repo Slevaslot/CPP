@@ -6,7 +6,7 @@
 /*   By: pdosso-d <pdosso-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:17:22 by pdosso-d          #+#    #+#             */
-/*   Updated: 2023/12/11 16:18:07 by pdosso-d         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:02:15 by pdosso-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Contact {
 	private:
-	string	data[5];
+	std::string	data[5];
 
   public:
     // Getter
-    string getData(int i) {
+    std::string getData(int i) {
       return data[i];
     }
 
     //Setter
-    void setData(string str, int i) {
+    void setData(std::string str, int i) {
     	data[i] = str;
     }
 };

@@ -1,100 +1,101 @@
 #include "mapb.hpp"
 
-int	getline_protected(string *test)
+int getline_protected(std::string *test)
 {
-	string ok;
-	getline(cin, *test);
+	std::string ok;
+	getline(std::cin, *test);
 	if (std::cin.eof())
 		return (0);
 	ok = *test;
-	if (ok.empty())
-		return (0);
+	//if (ok.empty())
+	//	return (0);
 	return (1);
 }
 
 void printContact(Contact contact)
 {
-	int i = -1;
-
-	while (++i < 5)
-		cout << contact.getData(i) << endl;
+	std::cout << "FIRST NAME     : " << contact.getData(0) << std::endl;
+	std::cout << "LAST NAME      : " << contact.getData(1) << std::endl;
+	std::cout << "NICKNAME       : " << contact.getData(2) << std::endl;
+	std::cout << "PHONE NUMBER   : " << contact.getData(3) << std::endl;
+	std::cout << "DARKEST SECRET : " << contact.getData(4) << std::endl;
 }
 
-int		PhoneBook::searchContact()
+int PhoneBook::searchContact()
 {
 	int i;
 	int j;
 	int l = -1;
-	string index;
+	std::string index;
 
 	while (++l < 8)
 	{
 		j = -1;
-		cout << "         " << l << "|";
+		std::cout << "         " << l << "|";
 		while (++j < 3)
 		{
 			i = 0;
 			if (this->contacts[l].getData(j).length() > 10)
 			{
-				cout << this->contacts[l].getData(j).substr(0, 9);
-				cout << ".";
+				std::cout << this->contacts[l].getData(j).substr(0, 9);
+				std::cout << ".";
 			}
 			else
 			{
 				while (++i + this->contacts[l].getData(j).length() <= 10)
-					cout << " ";
-				cout << this->contacts[l].getData(j);
+					std::cout << " ";
+				std::cout << this->contacts[l].getData(j);
 			}
 			if (j != 2)
-				cout << "|";
+				std::cout << "|";
 		}
-		cout << endl;
+		std::cout << std::endl;
 	}
-	cout << "ENTER INDEX : ";
+	std::cout << "ENTER INDEX    : ";
 	if (!getline_protected(&index))
 		return (0);
 	if (index.length() == 1 && index[0] >= '0' && index[0] <= '7')
 		printContact(this->contacts[index[0] - '0']);
 	else
-		cout << "INCORRECT INDEX" << endl;
+		std::cout << "INCORRECT INDEX" << std::endl;
 	return (1);
 }
 
-
-int	PhoneBook::phonebookstart()
+int PhoneBook::phonebookstart()
 {
 	int i = 0;
-	string x;
+	std::string x;
 	PhoneBook phonebook;
 
 	std::string test[5];
-	cout << "My Awesome PhoneBook" << endl;
+	std::cout << "My Awesome PhoneBook" << std::endl;
 	while (1)
 	{
+		std::cout << "-> ";
 		if (!getline_protected(&x))
-				return (0);
+			return (0);
 		if (x == "ADD")
 		{
-			cout << "FIRST NAME : ";
+			std::cout << "FIRST NAME     : ";
 			if (!getline_protected(&test[0]))
 				return (0);
-			this->contacts[i % 8].setData(test[0],0);
-			cout << "LAST NAME : ";
+			this->contacts[i % 8].setData(test[0], 0);
+			std::cout << "LAST NAME      : ";
 			if (!getline_protected(&test[1]))
 				return (0);
-			this->contacts[i % 8].setData(test[1],1);
-			cout << "NICKNAME : ";
+			this->contacts[i % 8].setData(test[1], 1);
+			std::cout << "NICKNAME       : ";
 			if (!getline_protected(&test[2]))
 				return (0);
-			this->contacts[i % 8].setData(test[2],2);
-			cout << "PHONE NUMBER : ";
+			this->contacts[i % 8].setData(test[2], 2);
+			std::cout << "PHONE NUMBER   : ";
 			if (!getline_protected(&test[3]))
 				return (0);
-			this->contacts[i % 8].setData(test[3],3);
-			cout << "DARKEST SECRET : ";
+			this->contacts[i % 8].setData(test[3], 3);
+			std::cout << "DARKEST SECRET : ";
 			if (!getline_protected(&test[4]))
 				return (0);
-			this->contacts[i % 8].setData(test[4],4);
+			this->contacts[i % 8].setData(test[4], 4);
 			i++;
 		}
 		if (x == "SEARCH")
@@ -109,7 +110,7 @@ int	PhoneBook::phonebookstart()
 	}
 }
 
-int	main()
+int main()
 {
 	PhoneBook phonebook;
 	phonebook.phonebookstart();
