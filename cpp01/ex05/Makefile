@@ -8,7 +8,7 @@ NAME = Harl
 all:		$(NAME)
 
 $(NAME):	$(SRC)
-			$(CC) -o BrainZ $(SRC)
+			$(CC) -o Harl $(SRC)
 
 clean:
 	rm -f $(OBJ) $(NAME)
