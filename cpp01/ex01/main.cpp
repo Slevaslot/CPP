@@ -6,7 +6,7 @@ int main(void)
     long unsigned int N;
 
     N = 3;
-    Zombies = zombieHorde(N, "Boup");
+    Zombies = zombieHorde(5, "Boup");
     for (long unsigned int i = 0; i != N; i++)
     {
         Zombies[i].announce();
