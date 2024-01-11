@@ -1,12 +1,11 @@
 #include <iostream>
 #include <string>
-using namespace std;
 
 int main(int argc, char** argv)
 {
 	int	j = 0;
-	string line;
-	string pushLine;
+	std::string line;
+	std::string pushLine;
 
 	(void)argc;
 	if (!argv[1])

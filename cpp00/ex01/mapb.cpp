@@ -7,8 +7,6 @@ int getline_protected(std::string *test)
 	if (std::cin.eof())
 		return (0);
 	ok = *test;
-	//if (ok.empty())
-	//	return (0);
 	return (1);
 }
 
