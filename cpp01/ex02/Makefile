@@ -3,7 +3,7 @@ SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CC = g++ -Wall -Wextra -Werror -std=c++98
-NAME = BrainZ
+NAME = HI THIS IS BRAIN
 
 all:		$(NAME)
 
