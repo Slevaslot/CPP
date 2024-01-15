@@ -15,12 +15,12 @@ class Fixed {
     static const int _value2 = 8;
 
     public :
-int getRawBits(void) const;
-    void setRawBits(int const raw);
     Fixed();
     Fixed(const Fixed& t);
     Fixed &operator=(const Fixed &t);
-~Fixed();
+    ~Fixed();
+    int getRawBits(void) const;
+    void setRawBits(int const raw);
 };
 
 #endif

@@ -28,6 +28,27 @@ Fixed& Fixed::operator=(const Fixed &t) {
     return (*this);
 }
 
+Fixed& Fixed::operator+(const Fixed &Fixed2) {
+    _fixed += Fixed2._fixed;
+    return (*this);
+}
+
+Fixed& Fixed::operator-(const Fixed &Fixed2) {
+    this->_fixed -= Fixed2._fixed;
+    return (*this);
+}
+
+Fixed& Fixed::operator*(const Fixed &Fixed2) {
+    _fixed = (toFloat() * Fixed2.toFloat()) * (float)(1 << _stock);
+    return (*this);
+}
+
+Fixed& Fixed::operator/(const Fixed &Fixed2) {
+    _fixed = (toFloat() / Fixed2.toFloat()) * (float)(1 << _stock);
+    return (*this);
+    return (*this);
+}
+
 std::ostream &operator<<(std::ostream& os, const Fixed& fixe){
         os << fixe.toFloat();
         return os;
