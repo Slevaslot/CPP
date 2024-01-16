@@ -36,6 +36,14 @@ int main(int ac, char **av)
     std::string s2;
     if (ac == 4)
     {
+        if (av[1][0] == '\0') {
+            std::cout << "Error : no file in argument" << std::endl;
+            return (2);
+        }
+        if (av[2][0] == '\0') {
+            std::cout << "Error : no occurence to find in argument" << std::endl;
+            return (2);
+        }
         filename = std::string(av[1]) + ".replace";
         s1 = av[2];
         s2 = av[3];

@@ -3,7 +3,7 @@
 HumanB::HumanB(std::string name)
 {
     this->_name = name;
-    std::cout << "My name is : " << this->_name << std::endl;
+    std::cout << this->_name << " is born" << std::endl;
 }
 
 HumanB::~HumanB()

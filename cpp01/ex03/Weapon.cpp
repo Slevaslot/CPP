@@ -3,12 +3,12 @@
 Weapon::Weapon(std::string type)
 {
         this->setType(type);
-        std::cout << this->_type << " is picked" << std::endl;
+        std::cout << this->_type << " is created" << std::endl;
 }
 
 Weapon::~Weapon()
 {
-        std::cout << "Weapon is destructed" << std::endl; 
+        std::cout << "Weapon is destructed" << std::endl;
 }
 std::string Weapon::getType()
 {
