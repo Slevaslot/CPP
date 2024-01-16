@@ -10,17 +10,10 @@ class Zombie {
 	std::string	name;
 
   public:
-    std::string getName() {
-      return name;
-    }
-    void setName(std::string str) {
-    	name = str;
-    }
+    std::string getName();
+    void setName(std::string str);
     void announce(void);
-    ~Zombie()
-    {
-      std::cout << this->name << " is dead!" << std::endl;
-    }
+    ~Zombie();
 };
 
 Zombie* zombieHorde( int N, std::string name );
