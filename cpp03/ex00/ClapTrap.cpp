@@ -77,9 +77,10 @@ void ClapTrap::takeDamage(unsigned int amount)
 	if (_hp == 0)
 		std::cout << "ClapTrap " << _name << " is already dead." << std::endl;
 	else {
-		_hp = _hp - amount;
 		std::cout << "ClapTrap " << _name << " is attacked, losing " << amount << " points of damage !" << std::endl;
-		if (_hp <= 0)
+		if (_hp > amount)
+			_hp = _hp - amount;
+		else
 		{
 			_hp = 0;
 			std::cout << "ClapTrap " << _name << " is now dead. " << std::endl;
@@ -101,8 +102,10 @@ void ClapTrap::beRepaired(unsigned int amount) {
 			_hp = 10;
 		}
 		else
+		{
 			_hp += amount;
-		std::cout << "ClapTrap " << _name << " repairs himself, gaining " << tmp << " health point(s) !" << std::endl;
+			tmp = amount;
+		}
 	}
 }
 

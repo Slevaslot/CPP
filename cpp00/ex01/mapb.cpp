@@ -62,46 +62,45 @@ int PhoneBook::searchContact()
 int PhoneBook::phonebookstart()
 {
 	int i = 0;
-	std::string x;
-	PhoneBook phonebook;
+	std::string input;
+	std::string input2;
 
-	std::string test[5];
 	std::cout << "My Awesome PhoneBook" << std::endl;
 	while (1)
 	{
 		std::cout << "-> ";
-		if (!getline_protected(&x))
+		if (!getline_protected(&input))
 			return (0);
-		if (x == "ADD")
+		if (input == "ADD")
 		{
 			std::cout << "FIRST NAME     : ";
-			if (!getline_protected(&test[0]))
+			if (!getline_protected(&input2))
 				return (0);
-			this->contacts[i % 8].setData(test[0], 0);
+			this->contacts[i % 8].setData(input2, 0);
 			std::cout << "LAST NAME      : ";
-			if (!getline_protected(&test[1]))
+			if (!getline_protected(&input2))
 				return (0);
-			this->contacts[i % 8].setData(test[1], 1);
+			this->contacts[i % 8].setData(input2, 1);
 			std::cout << "NICKNAME       : ";
-			if (!getline_protected(&test[2]))
+			if (!getline_protected(&input2))
 				return (0);
-			this->contacts[i % 8].setData(test[2], 2);
+			this->contacts[i % 8].setData(input2, 2);
 			std::cout << "PHONE NUMBER   : ";
-			if (!getline_protected(&test[3]))
+			if (!getline_protected(&input2))
 				return (0);
-			this->contacts[i % 8].setData(test[3], 3);
+			this->contacts[i % 8].setData(input2, 3);
 			std::cout << "DARKEST SECRET : ";
-			if (!getline_protected(&test[4]))
+			if (!getline_protected(&input2))
 				return (0);
-			this->contacts[i % 8].setData(test[4], 4);
+			this->contacts[i % 8].setData(input2, 4);
 			i++;
 		}
-		if (x == "SEARCH")
+		if (input == "SEARCH")
 		{
 			if (!searchContact())
 				return (0);
 		}
-		if (x == "EXIT")
+		if (input == "EXIT")
 		{
 			return (0);
 		}

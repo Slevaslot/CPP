@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapb.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdosso-d <pdosso-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aproust <aproust@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:17:22 by pdosso-d          #+#    #+#             */
-/*   Updated: 2024/01/09 16:02:15 by pdosso-d         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:04:34 by aproust          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ class Contact {
 	std::string	data[5];
 
   public:
-    // Getter
     std::string getData(int i) {
       return data[i];
     }
 
-    //Setter
     void setData(std::string str, int i) {
     	data[i] = str;
     }

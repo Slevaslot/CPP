@@ -1,19 +1,19 @@
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 #include <iostream>
 #include <string>
 #include <new>
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class FragTrap : public ClapTrap {
 
 	public :
-	ScavTrap();
-	ScavTrap(std::string name);
-	ScavTrap(ScavTrap &Scav);
-	~ScavTrap();
-	ScavTrap &operator=(const ScavTrap &Scav);
+	FragTrap();
+	FragTrap(std::string name);
+	FragTrap(FragTrap &Frag);
+	~FragTrap();
+	FragTrap &operator=(const FragTrap &Frag);
 	std::string getName();
 	unsigned int getHp();
 	unsigned int getEp();
@@ -22,7 +22,7 @@ class ScavTrap : public ClapTrap {
 	void setHp(unsigned int hp);
 	void setEp(unsigned int ep);
 	void setAd(unsigned int ad);
-	void guardGate();
+	void highFivesGuys();
 	void attack(const std::string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
