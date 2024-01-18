@@ -106,6 +106,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 			_hp += amount;
 			tmp = amount;
 		}
+		std::cout << "ScavTrap " << _name << " repairs himself, gaining " << tmp << " health point(s) !" << std::endl;
 	}
 }
 

@@ -14,7 +14,6 @@ Fixed::Fixed(const float value)
 {
     std::cout << "Float Constructor called" << std::endl;
     _fixed = roundf(value * (float)(1 << _stock));
-
 }
 
 Fixed::Fixed(const Fixed& t) {
