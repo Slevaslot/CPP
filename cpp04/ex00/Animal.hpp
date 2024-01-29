@@ -15,14 +15,4 @@ class Animal {
 		void makeSound();
 };
 
-class Dog : public Animal {
-	public :
-		Dog();
-};
-
-class Cat : public Animal {
-	public :
-		Cat();
-};
-
 #endif

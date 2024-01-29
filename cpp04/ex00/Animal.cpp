@@ -9,16 +9,6 @@ std::string Animal::getType() {
 	return (_name);
 }
 
-Dog::Dog(void): Animal() {
-	std::cout << "Dog Constructor called" << std::endl;
-	_name = "Dog";
-}
-
-Cat::Cat(void): Animal() {
-	std::cout << "Cat Constructor called" << std::endl;
-	_name = "Cat";
-}
-
 Animal::~Animal(void) {
 	std::cout << "Destructor called" << std::endl;
 }

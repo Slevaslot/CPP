@@ -1,16 +1,20 @@
 #include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
 int main(void) {
-	Animal *animal1;
-	Animal *animal2;
-	Animal *animal3;
+	Animal *animals[20];
 
-	animal1 = new Dog();
-	animal2 = new Cat();
-	std::cout << animal1->getType() << std::endl;
-	animal1->makeSound();
-	std::cout << animal2->getType() << std::endl;
-	animal2->makeSound();
-	delete (animal1);
-	delete (animal2);
+	int i = 0;
+	while (++i < 20)
+	{
+		if (i % 2 == 0)
+			animals[i] = new Cat();
+		if (i % 2 == 1)
+			animals[i] = new Dog();
+		animals[i]->makeSound();
+	}
+	i = 0;
+	while (++i < 20)
+		delete(animals[i]);
 }
