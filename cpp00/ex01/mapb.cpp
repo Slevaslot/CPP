@@ -1,4 +1,5 @@
-#include "mapb.hpp"
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 int getline_protected(std::string *test)
 {
@@ -63,9 +64,14 @@ int PhoneBook::phonebookstart()
 {
 	int i = 0;
 	std::string input;
+	std::string input0;
+	std::string input1;
 	std::string input2;
+	std::string input3;
+	std::string input4;
 
 	std::cout << "My Awesome PhoneBook" << std::endl;
+	std::cout << "commands : ADD (add a contact), SEARCH (search a contact in the phonebook) and EXIT (exit the programm)" << std::endl;
 	while (1)
 	{
 		std::cout << "-> ";
@@ -74,25 +80,30 @@ int PhoneBook::phonebookstart()
 		if (input == "ADD")
 		{
 			std::cout << "FIRST NAME     : ";
-			if (!getline_protected(&input2))
+			if (!getline_protected(&input0))
 				return (0);
-			this->contacts[i % 8].setData(input2, 0);
 			std::cout << "LAST NAME      : ";
-			if (!getline_protected(&input2))
+			if (!getline_protected(&input1))
 				return (0);
-			this->contacts[i % 8].setData(input2, 1);
 			std::cout << "NICKNAME       : ";
 			if (!getline_protected(&input2))
 				return (0);
-			this->contacts[i % 8].setData(input2, 2);
 			std::cout << "PHONE NUMBER   : ";
-			if (!getline_protected(&input2))
+			if (!getline_protected(&input3))
 				return (0);
-			this->contacts[i % 8].setData(input2, 3);
 			std::cout << "DARKEST SECRET : ";
-			if (!getline_protected(&input2))
+			if (!getline_protected(&input4))
 				return (0);
-			this->contacts[i % 8].setData(input2, 4);
+			if (input0.empty() || input1.empty() || input2.empty() || input3.empty() || input4.empty())
+			{
+				std::cout << "error: Contact's information cannot be empty try again" << std::endl;
+				continue ;
+			}
+			this->contacts[i % 8].setData(input0, 0);
+			this->contacts[i % 8].setData(input1, 1);
+			this->contacts[i % 8].setData(input2, 2);
+			this->contacts[i % 8].setData(input3, 3);
+			this->contacts[i % 8].setData(input4, 4);
 			i++;
 		}
 		if (input == "SEARCH")
