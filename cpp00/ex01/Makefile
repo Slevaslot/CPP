@@ -2,7 +2,7 @@ SRC = mapb.cpp PhoneBook.cpp Contact.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-CC = g++ -Wall -Wextra -Werror -std=c++98
+CC = c++ -Wall -Wextra -Werror -std=c++98
 NAME = mapb
 
 all:		$(NAME)

@@ -2,7 +2,7 @@ SRC = main.cpp ClapTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-CC = g++ -g -Wall -Wextra -Werror -std=c++98
+CC = c++ -g -Wall -Wextra -Werror -std=c++98
 NAME = ClapTrap
 
 all:		$(NAME)

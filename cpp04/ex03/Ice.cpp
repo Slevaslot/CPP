@@ -1,8 +1,8 @@
 #include "Ice.hpp"
 
 void Ice::use (ICharacter &target) {
-	if (_type == "ice")
-        std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	if (_type == "Ice")
+        std::cout << "* shoots an Ice bolt at " << target.getName() << " *" << std::endl;
 }
 
 Ice::Ice(): AMateria("Ice") {
@@ -14,7 +14,7 @@ Ice::Ice(std::string const & type) {
 }
 
 Ice::~Ice() {
-    delete(this);
+    std::cout << "Ice destructor called" << std::endl;
 }
 
 Ice* Ice::clone() const {

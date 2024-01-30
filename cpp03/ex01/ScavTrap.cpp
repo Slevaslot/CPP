@@ -8,7 +8,7 @@ ScavTrap::ScavTrap(): ClapTrap() {
 	_ad = 20;
 }
 
-ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
+ScavTrap::ScavTrap(const std::string name): ClapTrap(name) {
 	std::cout << "ScavTrap : Name constructor called" << std::endl;
 	_name = name;
 	_hp = 100;
@@ -16,7 +16,7 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
 	_ad = 20;
 }
 
-ScavTrap::ScavTrap(ScavTrap &Scav): ClapTrap(Scav) {
+ScavTrap::ScavTrap(const ScavTrap &Scav): ClapTrap(Scav) {
 	std::cout << "Copy Constructor called" << std::endl;
 	*this = Scav;
 }
@@ -33,35 +33,35 @@ ScavTrap::~ScavTrap() {
 	std::cout << "Scavtrap : Destructor called" << std::endl;
 }
 
-std::string ScavTrap::getName() {
+std::string ScavTrap::getName() const{
 	return (_name);
 }
 
-unsigned int ScavTrap::getHp() {
+unsigned int ScavTrap::getHp() const{
 	return (_hp);
 }
 
-unsigned int ScavTrap::getEp() {
+unsigned int ScavTrap::getEp() const{
 	return (_ep);
 }
 
-unsigned int ScavTrap::getAd() {
+unsigned int ScavTrap::getAd() const{
 	return (_ad);
 }
 
-void ScavTrap::setName(std::string name) {
+void ScavTrap::setName(const std::string name) {
 	_name = name;
 }
 
-void ScavTrap::setHp(unsigned int hp) {
+void ScavTrap::setHp(const unsigned int hp) {
 	_hp = hp;
 }
 
-void ScavTrap::setEp(unsigned int ep) {
+void ScavTrap::setEp(const unsigned int ep) {
 	_ep = ep;
 }
 
-void ScavTrap::setAd(unsigned int ad) {
+void ScavTrap::setAd(const unsigned int ad) {
 	_ad = ad;
 }
 
@@ -80,7 +80,7 @@ void ScavTrap::attack(const std::string &target) {
 	}
 }
 
-void ScavTrap::takeDamage(unsigned int amount)
+void ScavTrap::takeDamage(const unsigned int amount)
 {
 	if (_hp == 0)
 		std::cout << "ScavTrap " << _name << " is already dead." << std::endl;
@@ -96,7 +96,7 @@ void ScavTrap::takeDamage(unsigned int amount)
 	}
 }
 
-void ScavTrap::beRepaired(unsigned int amount) {
+void ScavTrap::beRepaired(const unsigned int amount) {
 	if (_hp == 0)
 		std::cout << "ScavTrap " << _name << " is dead." << std::endl;
 	else if (_ep == 0)

@@ -1,9 +1,9 @@
-SRC = main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp MateriaSource.cpp
+SRC = main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp MateriaSource.cpp ICharacter.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-CC = g++ -g -Wall -Wextra -Werror -std=c++98
-NAME = Animal
+CC = c++ -g -Wall -Wextra -Werror -std=c++98
+NAME = Materia
 
 all:		$(NAME)
 

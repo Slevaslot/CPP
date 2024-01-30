@@ -2,7 +2,7 @@ SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-CC = g++ -g -Wall -Wextra -Werror -std=c++98
+CC = c++ -g -Wall -Wextra -Werror -std=c++98
 NAME = Animal
 
 all:		$(NAME)

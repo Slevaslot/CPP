@@ -10,10 +10,12 @@ Weapon::~Weapon()
 {
         std::cout << "Weapon is destructed" << std::endl;
 }
-std::string Weapon::getType()
+
+const std::string Weapon::getType()
 {
-   return (this->_type);
+        return (this->_type);
 }
+
 void Weapon::setType(std::string type)
 {
         this->_type = type;

@@ -1,8 +1,8 @@
-SRC = main.cpp Fixed.cpp 
+SRC = main.cpp Fixed.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-CC = g++ -g -Wall -Wextra -Werror -std=c++98
+CC = c++ -g -Wall -Wextra -Werror -std=c++98
 NAME = Fixed
 
 all:		$(NAME)

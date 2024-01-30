@@ -8,7 +8,7 @@ ClapTrap::ClapTrap(void) {
 	_ad = 0;
 }
 
-ClapTrap::ClapTrap(std::string name) {
+ClapTrap::ClapTrap(const std::string name) {
 	std::cout << "Name Constructor called" << std::endl;
 	_name = name;
 	_hp = 10;
@@ -16,7 +16,7 @@ ClapTrap::ClapTrap(std::string name) {
 	_ad = 0;
 }
 
-ClapTrap::ClapTrap(ClapTrap &Clap) {
+ClapTrap::ClapTrap(const ClapTrap &Clap) {
 	std::cout << "Copy Constructor called" << std::endl;
 	*this = Clap;
 }
@@ -29,35 +29,35 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &Clap) {
 	return (*this);
 }
 
-std::string ClapTrap::getName() {
+std::string ClapTrap::getName() const{
 	return (_name);
 }
 
-unsigned int ClapTrap::getHp() {
+unsigned int ClapTrap::getHp() const{
 	return (_hp);
 }
 
-unsigned int ClapTrap::getEp() {
+unsigned int ClapTrap::getEp() const{
 	return (_ep);
 }
 
-unsigned int ClapTrap::getAd() {
+unsigned int ClapTrap::getAd() const{
 	return (_ad);
 }
 
-void ClapTrap::setName(std::string name) {
+void ClapTrap::setName(const std::string name) {
 	_name = name;
 }
 
-void ClapTrap::setHp(unsigned int hp) {
+void ClapTrap::setHp(const unsigned int hp) {
 	_hp = hp;
 }
 
-void ClapTrap::setEp(unsigned int ep) {
+void ClapTrap::setEp(const unsigned int ep) {
 	_ep = ep;
 }
 
-void ClapTrap::setAd(unsigned int ad) {
+void ClapTrap::setAd(const unsigned int ad) {
 	_ad = ad;
 }
 
@@ -72,7 +72,7 @@ void ClapTrap::attack(const std::string &target) {
 	}
 }
 
-void ClapTrap::takeDamage(unsigned int amount)
+void ClapTrap::takeDamage(const unsigned int amount)
 {
 	if (_hp == 0)
 		std::cout << "ClapTrap " << _name << " is already dead." << std::endl;
@@ -88,7 +88,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 	}
 }
 
-void ClapTrap::beRepaired(unsigned int amount) {
+void ClapTrap::beRepaired(const unsigned int amount) {
 	if (_hp == 0)
 		std::cout << "ClapTrap " << _name << " is dead." << std::endl;
 	else if (_ep == 0)

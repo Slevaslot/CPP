@@ -14,7 +14,7 @@ Cure::Cure(std::string const & type) {
 }
 
 Cure::~Cure() {
-    delete(this);
+    std::cout << "Cure destructor called" << std::endl;
 }
 
 Cure* Cure::clone() const {

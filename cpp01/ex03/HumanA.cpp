@@ -4,7 +4,7 @@ HumanA::HumanA(std::string name, Weapon& weapon)
 {
     this->_name = name;
     this->_weapon = &weapon;
-    std::cout << this->_name << " is born" << std::endl;
+    std::cout << this->_name << " is born and picks " << weapon.getType() << std::endl;
 }
 
 HumanA::~HumanA()

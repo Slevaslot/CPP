@@ -19,4 +19,5 @@ void HumanB::attack()
 void HumanB::setWeapon(Weapon& weapon)
 {
     _weapon = &weapon;
+    std::cout << this->_name << " picks " << weapon.getType() << std::endl;
 }

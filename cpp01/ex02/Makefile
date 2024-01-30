@@ -2,8 +2,8 @@ SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-CC = g++ -Wall -Wextra -Werror -std=c++98
-NAME = HI THIS IS BRAIN
+CC = c++ -Wall -Wextra -Werror -std=c++98
+NAME = BrainZ
 
 all:		$(NAME)
 

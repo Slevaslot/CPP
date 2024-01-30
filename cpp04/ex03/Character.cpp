@@ -1,12 +1,11 @@
 #include "Character.hpp"
-#include "ICharacter.hpp"
 
 std::string const & Character::getName() const {
     return (_name);
 }
 
 AMateria * Character::getMater(int array) {
-    if (array >= 0 || array <= 3)
+    if (array >= 0 && array <= 3)
         return (_item[array]);
     else
         return (NULL);
@@ -15,9 +14,9 @@ AMateria * Character::getMater(int array) {
 Character::Character(std::string name) {
     _name = name;
     _item[0] = NULL;
-    _item[0] = NULL;
-    _item[0] = NULL;
-    _item[0] = NULL;
+    _item[1] = NULL;
+    _item[2] = NULL;
+    _item[3] = NULL;
 }
 
 Character::Character(ICharacter &chara) {
@@ -27,6 +26,10 @@ Character::Character(ICharacter &chara) {
     _item[2] = chara.getMater(2);
     _item[3] = chara.getMater(3);
 }
+
+Character::~Character() {
+    std::cout << "Character destructor called" << std::endl;
+};
 
 void Character::equip(AMateria *mater) {
     if (!_item[0])
@@ -46,6 +49,9 @@ void Character::unequip(int idx) {
 }
 
 void Character::use (int idx, ICharacter& target) {
-    std::cout << _name;
-    _item[idx]->use(target);
+    if (_item[idx])
+    {
+        std::cout << "I CAST !\n";
+        _item[idx]->use(target);
+    }
 }
