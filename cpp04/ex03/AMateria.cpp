@@ -9,7 +9,7 @@ AMateria::AMateria(std::string const & type) {
 }
 
 AMateria::~AMateria() {
-    std::cout << "Amateria destructor called" << std::endl;
+    // std::cout << "Amateria destructor called" << std::endl;
 }
 
 
@@ -26,6 +26,6 @@ AMateria* AMateria::clone() const {
 }
 
 void AMateria::use (ICharacter& target) {
-    if (_type != "Ice" && _type != "cure")
+    if (_type != "ice" && _type != "cure")
         std::cout << "no spell types to cast on " << target.getName() << std::endl;
 }

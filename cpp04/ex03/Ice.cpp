@@ -1,12 +1,12 @@
 #include "Ice.hpp"
 
 void Ice::use (ICharacter &target) {
-	if (_type == "Ice")
+	if (_type == "ice")
         std::cout << "* shoots an Ice bolt at " << target.getName() << " *" << std::endl;
 }
 
-Ice::Ice(): AMateria("Ice") {
-    _type = "Ice";
+Ice::Ice(): AMateria("ice") {
+    _type = "ice";
 }
 
 Ice::Ice(std::string const & type) {
@@ -14,7 +14,7 @@ Ice::Ice(std::string const & type) {
 }
 
 Ice::~Ice() {
-    std::cout << "Ice destructor called" << std::endl;
+    // std::cout << "Ice destructor called" << std::endl;
 }
 
 Ice* Ice::clone() const {

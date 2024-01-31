@@ -28,7 +28,7 @@ Character::Character(ICharacter &chara) {
 }
 
 Character::~Character() {
-    std::cout << "Character destructor called" << std::endl;
+    // std::cout << "Character destructor called" << std::endl;
 };
 
 void Character::equip(AMateria *mater) {
@@ -44,14 +44,11 @@ void Character::equip(AMateria *mater) {
         std::cout << "too much materia equipped" << std::endl;
 }
 
-void Character::unequip(int idx) {
-    _item[idx] = NULL;
+void Character::unequip(int id) {
+    _item[id] = NULL;
 }
 
-void Character::use (int idx, ICharacter& target) {
-    if (_item[idx])
-    {
-        std::cout << "I CAST !\n";
-        _item[idx]->use(target);
-    }
+void Character::use (int id, ICharacter& target) {
+    if (_item[id])
+        _item[id]->use(target);
 }

@@ -6,7 +6,7 @@ void Cure::use (ICharacter &target) {
 }
 
 Cure::Cure() {
-    _type = "Default";
+    _type = "cure";
 }
 
 Cure::Cure(std::string const & type) {
@@ -14,7 +14,7 @@ Cure::Cure(std::string const & type) {
 }
 
 Cure::~Cure() {
-    std::cout << "Cure destructor called" << std::endl;
+    // std::cout << "Cure destructor called" << std::endl;
 }
 
 Cure* Cure::clone() const {
