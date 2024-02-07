@@ -11,6 +11,9 @@ $(NAME):	$(SRC)
 			$(CC) -o $(NAME) $(SRC)
 
 clean:
-	rm -f $(OBJ) $(NAME)
+	rm -f $(OBJ)
 
-re: clean all
+fclean:
+	rm -f $(OBJ)
+
+re: clean all fclean

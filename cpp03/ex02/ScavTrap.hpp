@@ -9,23 +9,21 @@
 class ScavTrap : public ClapTrap {
 
 	public :
-	ScavTrap();
-	ScavTrap(std::string name);
-	ScavTrap(ScavTrap &Scav);
-	~ScavTrap();
-	ScavTrap &operator=(const ScavTrap &Scav);
-	std::string getName();
-	unsigned int getHp();
-	unsigned int getEp();
-	unsigned int getAd();
-	void setName(std::string name);
-	void setHp(unsigned int hp);
-	void setEp(unsigned int ep);
-	void setAd(unsigned int ad);
-	void guardGate();
-	void attack(const std::string &target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
+		ScavTrap();
+		ScavTrap(const std::string name);
+		ScavTrap(const ScavTrap &Scav);
+		~ScavTrap();
+		ScavTrap &operator=(const ScavTrap &Scav);
+		std::string getName() const;
+		unsigned int getHp() const;
+		unsigned int getEp() const;
+		unsigned int getAd() const;
+		void setName(const std::string name);
+		void setHp(const unsigned int hp);
+		void setEp(const unsigned int ep);
+		void setAd(const unsigned int ad);
+		void guardGate();
+		void attack(const std::string &target);
 };
 
 #endif

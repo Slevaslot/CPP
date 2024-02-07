@@ -18,8 +18,6 @@ int main(void) {
 	test1.attack("test2");
 	test2.takeDamage(30);
 	test1.attack("test2");
-	test2.takeDamage(30);
-	test1.attack("test2");
 	std::cout << "Fighter 1's hp : " << test1.getHp() << std::endl;
 	std::cout << "Fighter 2's hp : " << test2.getHp() << std::endl;
 }

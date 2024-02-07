@@ -6,6 +6,7 @@ ClapTrap::ClapTrap(void) {
 	_hp = 10;
 	_ep = 10;
 	_ad = 0;
+	_maxHp = _hp;
 }
 
 ClapTrap::ClapTrap(const std::string name) {
@@ -14,6 +15,7 @@ ClapTrap::ClapTrap(const std::string name) {
 	_hp = 10;
 	_ep = 10;
 	_ad = 0;
+	_maxHp = _hp;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &Clap) {
@@ -26,6 +28,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &Clap) {
 	this->_hp = Clap._hp;
 	this->_ep = Clap._ep;
 	this->_ad = Clap._ad;
+	this->_maxHp = Clap._maxHp;
 	return (*this);
 }
 
@@ -63,27 +66,27 @@ void ClapTrap::setAd(const unsigned int ad) {
 
 void ClapTrap::attack(const std::string &target) {
 	if (_hp == 0)
-		std::cout << "ClapTrap " << _name << " is dead." << std::endl;
+		std::cout << _name << " is dead." << std::endl;
 	else if (_ep == 0)
-		std::cout << "ClapTrap " << _name << " does not have enough energy points." << std::endl;
+		std::cout << _name << " does not have enough energy points." << std::endl;
 	else {
 		--_ep;
-		std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _ad << " points of damage !" << std::endl;
+		std::cout << _name << " attacks " << target << ", causing " << _ad << " points of damage !" << std::endl;
 	}
 }
 
 void ClapTrap::takeDamage(const unsigned int amount)
 {
 	if (_hp == 0)
-		std::cout << "ClapTrap " << _name << " is already dead." << std::endl;
+		std::cout << _name << " is already dead." << std::endl;
 	else {
-		std::cout << "ClapTrap " << _name << " is attacked, losing " << amount << " points of damage !" << std::endl;
+		std::cout << _name << " is attacked, losing " << amount << " points of damage !" << std::endl;
 		if (_hp > amount)
 			_hp = _hp - amount;
 		else
 		{
 			_hp = 0;
-			std::cout << "ClapTrap " << _name << " is now dead. " << std::endl;
+			std::cout << _name << " is now dead. " << std::endl;
 		}
 	}
 }
@@ -97,9 +100,9 @@ void ClapTrap::beRepaired(const unsigned int amount) {
 	{
 		--_ep;
 		unsigned int tmp = _hp + amount;
-		if (tmp > 10) {
-			tmp = 10 - _hp;
-			_hp = 10;
+		if (tmp > _maxHp) {
+			tmp = _maxHp - _hp;
+			_hp = _maxHp;
 		}
 		else
 		{

@@ -5,7 +5,8 @@ FragTrap::FragTrap(): ClapTrap() {
 	_name = "Default";
 	_hp = 100;
 	_ep = 50;
-	_ad = 20;
+	_ad = 30;
+	_maxHp = _hp;
 }
 
 FragTrap::FragTrap(std::string name): ClapTrap(name) {
@@ -13,7 +14,8 @@ FragTrap::FragTrap(std::string name): ClapTrap(name) {
 	_name = name;
 	_hp = 100;
 	_ep = 50;
-	_ad = 20;
+	_ad = 30;
+	_maxHp = _hp;
 }
 
 FragTrap::FragTrap(FragTrap &Frag): ClapTrap(Frag) {
@@ -26,6 +28,7 @@ FragTrap &FragTrap::operator=(const FragTrap &Frag) {
 	this->_hp = Frag._hp;
 	this->_ep = Frag._ep;
 	this->_ad = Frag._ad;
+	this->_maxHp = Frag._maxHp;
 	return (*this);
 }
 
@@ -67,53 +70,4 @@ void FragTrap::setAd(unsigned int ad) {
 
 void FragTrap::highFivesGuys() {
 	std::cout << "FragTrap's highFive request is accepted" << std::endl;
-}
-
-void FragTrap::attack(const std::string &target) {
-	if (_hp == 0)
-		std::cout << "FragTrap " << _name << " is dead." << std::endl;
-	else if (_ep == 0)
-		std::cout << "FragTrap " << _name << " does not have enough energy points." << std::endl;
-	else {
-		--_ep;
-		std::cout << "FragTrap " << _name << " attacks " << target << ", causing " << _ad << " points of damage !" << std::endl;
-	}
-}
-
-void FragTrap::takeDamage(unsigned int amount)
-{
-	if (_hp == 0)
-		std::cout << "FragTrap " << _name << " is already dead." << std::endl;
-	else {
-		std::cout << "FragTrap " << _name << " is attacked, losing " << amount << " points of damage !" << std::endl;
-		if (_hp > amount)
-			_hp = _hp - amount;
-		else
-		{
-			_hp = 0;
-			std::cout << "FragTrap " << _name << " is now dead. " << std::endl;
-		}
-	}
-}
-
-void FragTrap::beRepaired(unsigned int amount) {
-	if (_hp == 0)
-		std::cout << "FragTrap " << _name << " is dead." << std::endl;
-	else if (_ep == 0)
-		std::cout << "FragTrap " << _name << " does not have enough energy points." << std::endl;
-	else
-	{
-		--_ep;
-		unsigned int tmp = _hp + amount;
-		if (tmp > 100) {
-			tmp = 100 - _hp;
-			_hp = 100;
-		}
-		else
-		{
-			_hp += amount;
-			tmp = amount;
-		}
-		std::cout << "FragTrap " << _name << " repairs himself, gaining " << tmp << " health point(s) !" << std::endl;
-	}
 }

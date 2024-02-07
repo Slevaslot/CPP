@@ -23,9 +23,6 @@ class FragTrap : public ClapTrap {
 	void setEp(unsigned int ep);
 	void setAd(unsigned int ad);
 	void highFivesGuys();
-	void attack(const std::string &target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
 };
 
 #endif

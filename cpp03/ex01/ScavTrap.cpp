@@ -6,6 +6,7 @@ ScavTrap::ScavTrap(): ClapTrap() {
 	_hp = 100;
 	_ep = 50;
 	_ad = 20;
+	_maxHp = _hp;
 }
 
 ScavTrap::ScavTrap(const std::string name): ClapTrap(name) {
@@ -14,6 +15,7 @@ ScavTrap::ScavTrap(const std::string name): ClapTrap(name) {
 	_hp = 100;
 	_ep = 50;
 	_ad = 20;
+	_maxHp = _hp;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &Scav): ClapTrap(Scav) {
@@ -26,6 +28,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &Scav) {
 	this->_hp = Scav._hp;
 	this->_ep = Scav._ep;
 	this->_ad = Scav._ad;
+	this->_maxHp = Scav._maxHp;
 	return (*this);
 }
 
@@ -77,43 +80,5 @@ void ScavTrap::attack(const std::string &target) {
 	else {
 		--_ep;
 		std::cout << "ScavTrap " << _name << " attacks " << target << ", causing " << _ad << " points of damage !" << std::endl;
-	}
-}
-
-void ScavTrap::takeDamage(const unsigned int amount)
-{
-	if (_hp == 0)
-		std::cout << "ScavTrap " << _name << " is already dead." << std::endl;
-	else {
-		std::cout << "ScavTrap " << _name << " is attacked, losing " << amount << " points of damage !" << std::endl;
-		if (_hp > amount)
-			_hp = _hp - amount;
-		else
-		{
-			_hp = 0;
-			std::cout << "ScavTrap " << _name << " is now dead. " << std::endl;
-		}
-	}
-}
-
-void ScavTrap::beRepaired(const unsigned int amount) {
-	if (_hp == 0)
-		std::cout << "ScavTrap " << _name << " is dead." << std::endl;
-	else if (_ep == 0)
-		std::cout << "ScavTrap " << _name << " does not have enough energy points." << std::endl;
-	else
-	{
-		--_ep;
-		unsigned int tmp = _hp + amount;
-		if (tmp > 100) {
-			tmp = 100 - _hp;
-			_hp = 100;
-		}
-		else
-		{
-			_hp += amount;
-			tmp = amount;
-		}
-		std::cout << "ScavTrap " << _name << " repairs himself, gaining " << tmp << " health point(s) !" << std::endl;
 	}
 }
