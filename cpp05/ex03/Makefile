@@ -1,9 +1,10 @@
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
+		ShruberryCreationForm.cpp RobotomyRequestForm.cpp Intern.cpp 
 
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++ -g -Wall -Wextra -Werror -std=c++98
-NAME = Bureaucrat
+NAME = Aform
 
 all:		$(NAME)
 

@@ -1,9 +1,9 @@
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp ScalarConverter.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++ -g -Wall -Wextra -Werror -std=c++98
-NAME = Bureaucrat
+NAME = ScalarConverter
 
 all:		$(NAME)
 

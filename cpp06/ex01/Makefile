@@ -1,9 +1,9 @@
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Serializer.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++ -g -Wall -Wextra -Werror -std=c++98
-NAME = Bureaucrat
+NAME = Serializer
 
 all:		$(NAME)
 

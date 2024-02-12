@@ -1,9 +1,10 @@
-SRC = main.cpp Bureaucrat.cpp Form.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp ShruberryCreationForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
+		ShruberryCreationForm.cpp RobotomyRequestForm.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++ -g -Wall -Wextra -Werror -std=c++98
-NAME = ExecForm
+NAME = Aform
 
 all:		$(NAME)
 
@@ -16,4 +17,4 @@ clean:
 fclean:
 	rm -f $(OBJ) $(NAME)
 
-re: clean all fclean
+re: fclean all
