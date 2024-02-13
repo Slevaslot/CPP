@@ -35,36 +35,52 @@ void ScalarConverter::convert(std::string input) {
     i >> in;
     d >> dou;
     f >> fl;
-    if ((ch >= '0' && ch <= '9') || ((ch == '-' && in < 0) || (ch == '+' && in)) || ((input == "nan") || (input == "-inf") || (input == "+inf"))) {
-        std::cout << "char: Non displayable" << std::endl;
-        std::cout << "int: " << in << std::endl;
-        if (in >= 1000000 || in <= -1000000)
+    if ((ch >= '0' && ch <= '9') || ((ch == '-' && in < 0) || (ch == '+' && in)) || ((input == "nan") || (input == "-inf") || (input == "+inf")))
+    {
+        size_t i = input.find(".", 0);
+        if (i != std::string::npos)
         {
-            std::cout << "float: " << fl << "f" << std::endl;
-            std::cout << "double: " << dou << std::endl;
+            const char *str = input.c_str();
+            while (str[++i] >= '0' && str[i] <= '9')
+                ;
+            if (!str[i] || str[i] == 'f')
+                std::cout << "char: '*'" << std::endl;
+            else
+                std::cout << "char: Non displayable" << std::endl;
+        }
+        else
+            std::cout << "char: impossible" << std::endl;
+        if (input == "nan" || input == "-inf" || input == "+inf")
+        {
+            std::cout << "int: impossible" << std::endl;
+            std::cout << "float: " << input << "f" << std::endl;
+            std::cout << "double: " << input << std::endl;
         }
         else
         {
-            std::cout << "float: " << fl << ".0f" << std::endl;
-            std::cout << "double: " << dou << ".0" << std::endl;
+            std::cout << "int: " << in << std::endl;
+            if (in >= 1000000 || in <= -1000000)
+            {
+                std::cout << "float: " << fl << "f" << std::endl;
+                std::cout << "double: " << dou << std::endl;
+            }
+            else
+            {
+                std::cout << "double: " << dou << ".0" << std::endl;
+                std::cout << "float: " << fl << ".0f" << std::endl;
+            }
         }
     }
     else if (input.length() == 1) {
         std::cout << "char: " << ch << std::endl;
         std::cout << "int: impossible" << std::endl;
-        std::cout << "float: " << input << "f" << std::endl;
-        std::cout << "double: " << input << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
     }
     else if (input.length() > 1) {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
-        std::cout << "float: " << input << "f" << std::endl;
-        std::cout << "double: " << input << std::endl;
-    }
-    else {
-        std::cout << "char: " << ch << std::endl;
-        std::cout << "int: " << in << std::endl;
-        std::cout << "float: " << fl << ".0f" << std::endl;
-        std::cout << "double: " << dou << ".0" << std::endl;
+        std::cout << "float: impossible" << input << "f" << std::endl;
+        std::cout << "double: impossible" << input << std::endl;
     }
 }
