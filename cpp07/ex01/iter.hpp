@@ -11,10 +11,9 @@ void printarray(T array) {
 
 template <typename T>
 
-void iter(T *array, unsigned int size, void*(func)(T array)) {
+void iter(T *array, unsigned int size, void (*func)(T array)) {
 	for (unsigned int i = 0; i < size; i++) {
 		func(array[i]);
-		std::cout << i << std::endl;
 	}
 }
 
