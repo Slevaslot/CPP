@@ -8,11 +8,15 @@
 #include "Brain.hpp"
 
 class Dog : public Animal {
-	private : 
+	private :
 		Brain *_brain;
 	public :
 		Dog();
+		Dog(Dog const & Dog);
+		Dog &operator=(Dog const & Dog);
 		~Dog();
+		std::string getType();
+		void makeSound();
 };
 
 #endif

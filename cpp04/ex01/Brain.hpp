@@ -6,8 +6,13 @@
 #include <new>
 
 class Brain {
-	protected :
+	private :
 		std::string _ideas[100];
+	public :
+		Brain();
+		Brain(Brain const & Brain);
+		Brain &operator=(Brain const & Brain);
+		~Brain();
 };
 
 #endif

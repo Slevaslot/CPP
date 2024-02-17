@@ -9,7 +9,11 @@
 class Cat : public Animal {
 	public :
 		Cat();
+		Cat(Cat const & Cat);
+		Cat &operator=(Cat const & Cat);
+		virtual ~Cat();
+		std::string getType();
+		void makeSound();
 };
 
 #endif
-

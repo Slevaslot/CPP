@@ -2,7 +2,16 @@
 
 Animal::Animal(void) {
 	_name = "Unknown animal";
-	// std::cout << "Default Constructor called" << std::endl;
+	std::cout << "Default Constructor called" << std::endl;
+}
+
+Animal::Animal(Animal const & ani) {
+	*this = ani;
+}
+
+Animal &Animal::operator=(Animal const &  ani) {
+	_name = ani._name;
+	return (*this);
 }
 
 std::string Animal::getType() {
@@ -14,10 +23,5 @@ Animal::~Animal(void) {
 }
 
 void Animal::makeSound(void) {
-	if (_name == "Dog")
-		std::cout << "Bark!" << std::endl;
-	else if (_name == "Cat")
-		std::cout << "Meow!" << std::endl;
-	else
-		std::cout << "Intangible sound." << std::endl;
+	std::cout << "Intangible sound." << std::endl;
 }
