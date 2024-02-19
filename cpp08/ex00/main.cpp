@@ -1,15 +1,25 @@
 #include "easyfind.hpp"
 
-int main() {
-	std::vector<int> vect (10);
-	std::fill(vect.begin(), vect.end(), 2);
-	std::vector<int>::iterator test = easyfind(&vect[0], 3);
-	// if (test)
-		std::cout << test - vect.begin() << std::endl;
-	// std::map<int, int> map;
-	// map.insert(std::pair<int,int>( 2, 30 ));
-	// map.insert(std::pair<int,int>( 1, 42 ));
-	// map.insert(std::pair<int,int>( 3, 42 ));
-	// test = easyfind(&map[0]	, 42);
-	return 0;
+int main()
+{
+	std::vector<int> vec;
+	std::vector<int>::iterator i;
+	srand(time(NULL));
+	for (int i = 0; i < 10; i++)
+	{
+		int r = rand() % 10;
+
+		vec.push_back(r);
+		std::cout << "array[" << i << "] = " << r << std::endl;
+	}
+	int to_find = rand() % 10;
+	std::cout << "to_find = " << to_find << std::endl;
+	try
+	{
+		i = easyfind(vec, to_find);
+		std::cout << *i << std::endl;
+	}
+	catch(std::invalid_argument& e) {
+		std::cerr << e.what() << '\n';
+	}
 }

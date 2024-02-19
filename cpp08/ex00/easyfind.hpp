@@ -3,33 +3,54 @@
 
 #include <iostream>
 #include <vector>
-#include <deque>
-#include <list>
-#include <set>
 #include <map>
 #include <stdexcept>
 #include <iterator>
 #include <cctype>
+#include <algorithm>
 
 template <typename T>
 
-typename std::vector<int>::iterator easyfind(T &array, int to_find)
+typename T::iterator easyfind(T &array, int n)
 {
-	try {
-		std::vector<int>::iterator it = std::find(array.begin(), array.end(), to_find);
-		if (it == array.end())
-			throw std::invalid_argument("No occurence found\n");
-		else
-			return it;
+	typename std::vector<int>::iterator it = std::find(array.begin(), array.end(), n);
+	if (it != array.end())
+		return it;
+	else
+	{
+		throw std::invalid_argument("cannot find occurence in the array");
+		return array.end();
 	}
-	catch (std::invalid_argument & e) {
-		std::cerr << e.what();
-	}
-	return ;
 }
 
-// template <typename test, typename test_value>
+template <typename key, typename value>
 
+typename std::map<key, value>::iterator easyfind(std::map<key, value> &array, int n)
+{
+	for (typename std::map<key, value>::iterator it = array.begin(); it != array.end(); ++it)
+	{
+		if (it->second == n)
+			return it;
+		else {
+			throw std::invalid_argument("cannot find occurence in the array");
+			return array.end();
+		}
+	}
+}
 
+template <typename key, typename value>
+
+typename std::multimap<key, value>::iterator easyfind(std::multimap<key, value> &array, int n)
+{
+	for (typename std::multimap<key, value>::iterator it = array.begin(); it != array.end(); ++it)
+	{
+		if (it->second == n)
+			return it;
+		else {
+			throw std::invalid_argument("cannot find occurence in the array");
+			return array.end();
+		}
+	}
+}
 
 #endif
