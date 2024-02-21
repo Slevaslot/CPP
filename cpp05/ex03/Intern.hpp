@@ -19,7 +19,10 @@ class Intern {
         AForm *makeForm(std::string nameForm, std::string);
         ~Intern();
 		void executeConcrete() const;
-        void WrongFormNameException();
+        class WrongFormNameException: public std::exception {
+            public :
+                virtual const char* what() const throw();
+        };
         AForm *newPresidentialPardonForm(std::string target);
         AForm *newShruberryCreationForm(std::string target);
         AForm *newRobotomyRequestForm(std::string target);

@@ -23,8 +23,14 @@ class Form {
         int getExecGrade() const;
         int getSignGrade() const;
         bool getIsSigned() const;
-        void GradeTooHighException();
-        void GradeTooLowException();
+        class GradeTooLowException: public std::exception {
+            public :
+                virtual const char *what() const throw();
+        };
+        class GradeTooHighException: public std::exception {
+            public :
+                virtual const char* what() const throw();
+        };
         int beSigned(Bureaucrat &bureaucrat);
         ~Form();
 };

@@ -8,9 +8,9 @@ Form::Form(): _name("Default") {
 
 Form::Form(std::string name, int grade1, int grade2): _name(name) {
     if (grade1 > 150 || grade2 > 150)
-        GradeTooLowException();
+        throw GradeTooLowException();
     else if (grade1 < 1 || grade2 < 1)
-        GradeTooHighException();
+        throw GradeTooHighException();
     else
     {
         _sign_grade = grade1;
@@ -21,9 +21,9 @@ Form::Form(std::string name, int grade1, int grade2): _name(name) {
 
 Form::Form(const Form& form): _name(form.getName()) {
     if (form.getSignGrade() > 150 || form.getExecGrade() > 150)
-        GradeTooLowException();
+        throw GradeTooLowException();
     else if (form.getSignGrade() < 1 || form.getExecGrade() < 1)
-        GradeTooHighException();
+        throw GradeTooHighException();
     else
     {
         _sign_grade = form.getSignGrade();
@@ -49,12 +49,12 @@ bool Form::getIsSigned() const {
     return _is_signed;
 }
 
-void Form::GradeTooLowException() {
-    throw std::invalid_argument("Form's grade too low\n");
+const char* Form::GradeTooHighException:: what() const throw() {
+	return "Form's grade too high";
 }
 
-void Form::GradeTooHighException() {
-    throw std::invalid_argument("Form's grade too high\n");
+const char* Form::GradeTooLowException:: what() const throw() {
+	return "Form's grade too low";
 }
 
 std::ostream &operator<<(std::ostream& os, const Form& form){
@@ -66,7 +66,7 @@ int Form::beSigned(Bureaucrat &bureaucrat) {
     if (bureaucrat.getGrade() > _sign_grade)
     {
         std::cout << bureaucrat.getName() << " couldn't sign " <<  _name << " because ";
-        bureaucrat.GradeTooLowException();
+        throw GradeTooHighException();
         return 0;
     }
     else

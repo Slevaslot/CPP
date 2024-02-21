@@ -16,8 +16,8 @@ AForm *Intern::newShruberryCreationForm(std::string target) {
     return (new ShruberryCreationForm(target));
 }
 
-void Intern::WrongFormNameException() {
-    throw std::invalid_argument("invalid name for the Form");
+const char* Intern::WrongFormNameException:: what() const throw() {
+	return "Bureaucrat's grade too high";
 }
 
 AForm *Intern::makeForm(std::string nameForm, std::string target) {
@@ -33,11 +33,11 @@ AForm *Intern::makeForm(std::string nameForm, std::string target) {
                 }
                 i++;
             }
-        this->WrongFormNameException();
+        throw WrongFormNameException();
         return NULL;
 
     }
-    catch (std::invalid_argument & e) {
+    catch (std::exception & e) {
         std::cerr << e.what() << std::endl;
         return NULL;
     }

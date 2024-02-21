@@ -9,9 +9,9 @@ AForm::AForm(): _name("Default") {
 
 AForm::AForm(std::string name, int grade1, int grade2): _name(name) {
     if (grade1 > 150 || grade2 > 150)
-        GradeTooLowException();
+        throw GradeTooLowException();
     else if (grade1 < 1 || grade2 < 1)
-        GradeTooHighException();
+        throw GradeTooHighException();
     else
     {
         _sign_grade = grade1;
@@ -22,9 +22,9 @@ AForm::AForm(std::string name, int grade1, int grade2): _name(name) {
 
 AForm::AForm(const AForm& Aform): _name(Aform.getName()) {
     if (Aform.getSignGrade() > 150 || Aform.getExecGrade() > 150)
-        GradeTooLowException();
+        throw GradeTooLowException();
     else if (Aform.getSignGrade() < 1 || Aform.getExecGrade() < 1)
-        GradeTooHighException();
+        throw GradeTooHighException();
     else
     {
         _sign_grade = Aform.getSignGrade();
@@ -50,16 +50,16 @@ bool AForm::getIsSigned() const {
     return _is_signed;
 }
 
-void AForm::GradeTooLowException() {
-    throw std::invalid_argument("AForm's grade too low");
+const char* AForm::GradeTooHighException:: what() const throw() {
+	return "AForm's grade too high";
 }
 
-void AForm::GradeTooHighException() {
-    throw std::invalid_argument("AForm's grade too high");
+const char* AForm::GradeTooLowException:: what() const throw() {
+	return "AForm's grade too low";
 }
 
-void AForm::FormIsNotSignedException() {
-    throw std::invalid_argument("AForm is not signed");
+const char* AForm::FormIsNotSignedException:: what() const throw() {
+    return "AForm is not signed";
 }
 
 std::ostream &operator<<(std::ostream& os, const AForm& Aform){
@@ -71,7 +71,7 @@ void AForm::execute(Bureaucrat &bureaucrat) {
     if (!_is_signed)
         FormIsNotSignedException();
     else if (bureaucrat.getGrade() > _exec_grade) {
-        GradeTooHighException();
+        throw GradeTooHighException();
     }
 	std::cout << bureaucrat.getName() << " executes " << _name << std::endl;
     executeConcrete();
@@ -79,7 +79,7 @@ void AForm::execute(Bureaucrat &bureaucrat) {
 
 void AForm::beSigned(Bureaucrat &bureaucrat) {
     if (bureaucrat.getGrade() > _sign_grade)
-        GradeTooHighException();
+        throw GradeTooHighException();
     else
         _is_signed = 1;
 }

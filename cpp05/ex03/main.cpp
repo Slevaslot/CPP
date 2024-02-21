@@ -23,19 +23,19 @@ int main(void) {
         delete (f2);
         delete (f3);
     }
-    catch (const std::invalid_argument & str) {
-        std::cerr << "error: " << str.what();
+    catch (const std::exception & str) {
+        std::cerr << "error: " << str.what() << std::endl;
     }
     try {
         Bureaucrat Albert("Ablert", 42);
     }
-    catch (const std::invalid_argument & str) {
-        std::cerr << "error: " << str.what();
+    catch (const std::exception & str) {
+        std::cerr << "error: " << str.what() << std::endl;
     }
     try {
         Bureaucrat Test("test" , 0);
     }
-    catch (const std::invalid_argument & str) {
-        std::cerr << "error: " << str.what();
+    catch (const std::exception & str) {
+        std::cerr << "error: " << str.what() << std::endl;
     }
 }

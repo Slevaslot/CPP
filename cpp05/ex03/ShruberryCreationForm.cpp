@@ -1,11 +1,11 @@
 #include "ShruberryCreationForm.hpp"
 
-ShruberryCreationForm::ShruberryCreationForm(): AForm("ShruberryCreationForm", 25, 5)
+ShruberryCreationForm::ShruberryCreationForm(): AForm("ShruberryCreationForm", 145, 137)
 {
 	_target = "default";
 }
 
-ShruberryCreationForm::ShruberryCreationForm(std::string target): AForm("ShruberryCreationForm", 25, 5)
+ShruberryCreationForm::ShruberryCreationForm(std::string target): AForm("ShruberryCreationForm", 145, 137)
 {
 	_target = target;
 }
