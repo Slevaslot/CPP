@@ -19,7 +19,7 @@ int main()
 		i = easyfind(vec, to_find);
 		std::cout << *i << std::endl;
 	}
-	catch(std::invalid_argument& e) {
+	catch(std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 }

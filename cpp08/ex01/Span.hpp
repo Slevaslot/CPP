@@ -11,11 +11,11 @@
 
 class Span {
 	private :
-		int *_array;
+		std::vector<int> _array;
 		unsigned int _size;
 	public :
 		Span();
-		Span(unsigned int n);
+		Span(int n);
 		Span(Span const & span);
 		Span &operator=(Span const & span);
 		~Span();

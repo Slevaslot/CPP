@@ -18,7 +18,7 @@ typename T::iterator easyfind(T &array, int n)
 		return it;
 	else
 	{
-		throw std::invalid_argument("cannot find occurence in the array");
+		throw std::exception("cannot find occurence in the array");
 		return array.end();
 	}
 }
@@ -32,7 +32,7 @@ typename std::map<key, value>::iterator easyfind(std::map<key, value> &array, in
 		if (it->second == n)
 			return it;
 		else {
-			throw std::invalid_argument("cannot find occurence in the array");
+			throw std::exception("cannot find occurence in the array");
 			return array.end();
 		}
 	}
@@ -47,7 +47,7 @@ typename std::multimap<key, value>::iterator easyfind(std::multimap<key, value> 
 		if (it->second == n)
 			return it;
 		else {
-			throw std::invalid_argument("cannot find occurence in the array");
+			throw std::exception("cannot find occurence in the array");
 			return array.end();
 		}
 	}
