@@ -52,11 +52,11 @@ void Bureaucrat::signForm(AForm &form) {
     }
     catch (std::exception &e) {
         std::cerr << _name << " couldn't sign " <<  form.getName() << " because " << e.what() << std::endl;
-    }    
+    }
 }
 
 
-void Bureaucrat::executeForm(AForm &form) {
+void Bureaucrat::executeForm(AForm const &form) {
 	try {
 		form.execute(*this);
 	}

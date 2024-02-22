@@ -9,10 +9,10 @@
 class Bureaucrat;
 
 class AForm {
-	private : 
+	private :
 		std::string const _name;
-        int _exec_grade;
-        int _sign_grade;
+        int const _sign_grade;
+        int const _exec_grade;
         bool _is_signed;
 	public :
 		AForm();
@@ -36,8 +36,8 @@ class AForm {
                 virtual const char* what() const throw();
         };
         void beSigned(Bureaucrat &bureaucrat);
-        void execute(Bureaucrat &bureaucrat);
-		virtual void	executeConcrete() const = 0;
+        void execute(Bureaucrat const &bureaucrat) const;
+		virtual void executeConcrete() const = 0;
         virtual ~AForm();
 };
 std::ostream &operator<<(std::ostream& os, const AForm& Aform);

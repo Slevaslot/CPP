@@ -9,7 +9,7 @@
 class AForm;
 
 class Bureaucrat {
-	private : 
+	private :
 		std::string const _name;
         int _grade;
 	public :
@@ -28,7 +28,7 @@ class Bureaucrat {
                 virtual const char* what() const throw();
         };
         void signForm(AForm &aform);
-        void executeForm(AForm &aform);
+        void executeForm(AForm const &aform);
         void incrementGrade();
         void decrementGrade();
         ~Bureaucrat();
