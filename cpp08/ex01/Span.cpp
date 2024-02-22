@@ -8,7 +8,7 @@ Span::Span(int n): _array(0) {
 	if (n <= 0)
 	{
 		_size = 0;
-		throw std::exception("Array cannot be of negative size\n");
+		throw std::invalid_argument("Array cannot be of negative size\n");
 	}
 	else
 		_size = n;
@@ -64,4 +64,9 @@ int Span::longestSpan() {
 	std::vector<int> sorted_array = _array;
 	std::sort(sorted_array.begin(), sorted_array.end());
 	return sorted_array[_size - 1] - sorted_array[0];
+}
+
+void Span::fillArray(int nb, int it) {
+	for (int i = 0; i < it; i++)
+		addNumber(nb);
 }

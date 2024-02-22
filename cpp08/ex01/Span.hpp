@@ -21,6 +21,7 @@ class Span {
 		~Span();
 		void addNumber(int nb);
 		int shortestSpan();
+		void fillArray(int nb);
 		int longestSpan();
 };
 
