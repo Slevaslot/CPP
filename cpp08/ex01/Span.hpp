@@ -13,15 +13,16 @@ class Span {
 	private :
 		std::vector<int> _array;
 		unsigned int _size;
+		unsigned int _it;
 	public :
 		Span();
 		Span(int n);
 		Span(Span const & span);
 		Span &operator=(Span const & span);
 		~Span();
+		void addNumber(const std::vector<int>::iterator &begin, const std::vector<int>::iterator &end);
 		void addNumber(int nb);
 		int shortestSpan();
-		void fillArray(int nb);
 		int longestSpan();
 };
 
