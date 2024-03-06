@@ -23,10 +23,6 @@ void identify(Base* p){
 
 }
 
-// void identify(Base& p){
-    
-// }
-
 int main(void) {
     Base *test = generate();
     identify(test);

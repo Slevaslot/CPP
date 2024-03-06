@@ -18,6 +18,18 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& truc) {
 }
 
 void ScalarConverter::convert(std::string input) {
+    char ch = static_cast<char>(input);
+    int in = static_cast<int>(input);
+    double dou = static_cast<double>(input);
+    float fl = static_cast<float>(input);
+
+    std::cout << ch << std::endl;
+    std::cout << in << std::endl;
+    std::cout << dou << std::endl;
+    std::cout << fl << std::endl;
+}
+
+void ScalarConverter::convert(std::string input) {
     std::stringstream c;
     std::stringstream i;
     std::stringstream d;
@@ -45,11 +57,11 @@ void ScalarConverter::convert(std::string input) {
                 ;
             if (!str[i] || str[i] == 'f')
                 std::cout << "char: '*'" << std::endl;
-            else
-                std::cout << "char: Non displayable" << std::endl;
         }
-        else
+        else if ((input == "nan") || (input == "-inf") || (input == "+inf"))
             std::cout << "char: impossible" << std::endl;
+        else
+            std::cout << "char: Non displayable" << std::endl;
         if (input == "nan" || input == "-inf" || input == "+inf")
         {
             std::cout << "int: impossible" << std::endl;
@@ -80,7 +92,7 @@ void ScalarConverter::convert(std::string input) {
     else if (input.length() > 1) {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
-        std::cout << "float: impossible" << input << "f" << std::endl;
-        std::cout << "double: impossible" << input << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
     }
 }
