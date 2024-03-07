@@ -4,7 +4,6 @@
 #include "Base.hpp"
 
 class C : public Base {
-    ~C();
 };
 
 #endif
