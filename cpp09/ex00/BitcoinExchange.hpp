@@ -8,6 +8,8 @@
 #include <fstream>
 #include <sstream>
 
+#define MAX 131072
+
 class BitcoinExchange {
 	public :
 		BitcoinExchange();
@@ -17,11 +19,7 @@ class BitcoinExchange {
 		void readInputFile(std::string input);
 
 	private :
-		std::vector<std::string> _date;
-		std::vector<float> _value;
-		size_t _size;
-		std::string *_inp_date;
-		int *_inp_date;
+		std::map<std::string, float> _data;
 };
 
 #endif

@@ -22,8 +22,7 @@ BitcoinExchange::BitcoinExchange() {
 			date += '\0';
 			fl << &line[i + 1];
 			fl >> value;
-			_date.push_back(date);
-			_value.push_back(value);
+			_data.insert(std::pair<std::string, float>(date, value));
 		}
 	}
 }
@@ -33,8 +32,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &truc) {
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &truc) {
-	this->map = truc.map;
-	this->inp_map = truc.inp_map;
+	this->_data = truc._data;
 	return *this;
 }
 
@@ -44,55 +42,38 @@ void BitcoinExchange::readInputFile(std::string input) {
 	std::ifstream file(input.c_str());
 	if (!file)
 		std::cerr << "Error while opening " << input << std::endl;
-	std::string line;
+	std::string line[MAX];
 	std::string buff;
 	bool if_first = true;
-	it = 0;
-	while (getline(file, buff))
-		line += buff;
-	_size = it;
-	it = 0;
-	for (it < line.length()) {
+	size_t it = 0;
+	for (int i = 0; getline(file, line[i]); i++)
+		;
+	while (line[it].length()) {
 		if (if_first == true) {
 			if_first = false;
+			it++;
 			continue;
 		}
-		it = line.find("|", it);
-		if (i != std::string::npos) {
+		size_t j = line[it].find("|", 0);
+		if (j != std::string::npos) {
 			std::stringstream fl;
 			float value;
 			std::string date;
-			for (size_t j = 0; j < it - 1; j++)
-				date += line[j];
-			date += '\0';
-			k = line.find("\n", it);
-			if (k != std::string::npos) {
-				std::string line2 = line.substr(it, k);
-				fl << line2;
-				fl >> value;
-				delete line2;
-				it += k;
+			date = line[it].substr(0, j);
+			std::string line2 = line[it].substr(j + 1, line[it].length());
+			fl << line2;
+			fl >> value;
+			if (value < 0)
+				std::cout << "Error: not a positive number\n";
+			else if (value > 1000)
+				std::cout << "Error: too large number\n";
+			else {
+				std::multimap<std::string, float>::iterator ite = _data.upper_bound(date);
+				std::cout << date << " => " << value << " = " << (--ite)->second * value <<std::endl;
 			}
-			if (value < 0) {
-				std::string err_msg = "Error: not a positive number\n";
-				inp_map.insert(std::pair<std::string, float>(err_msg, -1));
-				continue ;
-			}
-			else if (value > 1000) {
-				std::string err_msg = "Error: too large number\n";
-				inp_map.insert(std::pair<std::string, float>(err_msg, -1));
-				continue ;
-			}
-			else
-				inp_map.insert(std::pair<std::string, float>(date, value));
-			std::cout << line << std::endl;
-			for (std::map<std::string, float>::const_iterator it = inp_map.begin(); it != inp_map.end(); it++)
-				std::cout << it->first << " | " << it->second << std::endl;
-			std::cout << std::endl;
 		}
-		else  {
-			std::string err_msg = "Error: bad input => " + line + "\n";
-			inp_map.insert(std::pair<std::string, float>(err_msg, -1));
-		}
+		else
+			std::cout << "Error: bad input => " + line[it] + "\n";
+		it++;
 	}
 }
