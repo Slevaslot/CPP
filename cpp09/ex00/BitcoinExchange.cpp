@@ -38,42 +38,59 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &truc) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
+bool isValidDate(int year, int month, int day) {
+	if (year < 1)
+		return false;
+	else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+		return day >= 1 && day <= 31;
+	else if (month == 4 || month == 6 || month == 9 || month == 11)
+    	return day >= 1 && day <= 30;
+    else if (month == 2)
+      return (year % 4 == 0) ? (day >= 1 && day <= 28) : (day >= 1 && day <= 29);
+  return false;
+}
+
 void BitcoinExchange::readInputFile(std::string input) {
+	std::string line;
+	std::string buff;
+	bool if_first = true;
 	std::ifstream file(input.c_str());
 	if (!file)
 		std::cerr << "Error while opening " << input << std::endl;
-	std::string line[MAX];
-	std::string buff;
-	bool if_first = true;
-	size_t it = 0;
-	for (int i = 0; getline(file, line[i]); i++)
-		;
-	while (line[it].length()) {
+
+	while (getline(file, line)) {
 		if (if_first == true) {
 			if_first = false;
-			it++;
 			continue;
 		}
-		size_t j = line[it].find("|", 0);
+		size_t j = line.find("|", 0);
 		if (j != std::string::npos) {
-			std::stringstream fl;
+			std::stringstream fl, dt;
 			float value;
 			std::string date;
-			date = line[it].substr(0, j);
-			std::string line2 = line[it].substr(j + 1, line[it].length());
+			int year, month, day;
+
+			date = line.substr(0, j);
+    		dt << date;
+    		dt >> year >> month >> day;
+			month *= -1;
+			day *= -1;
+			std::string line2 = line.substr(j + 1, line.length());
 			fl << line2;
 			fl >> value;
-			if (value < 0)
-				std::cout << "Error: not a positive number\n";
+
+   			if (!isValidDate(year, month, day))
+      			std::cout << "Error: invalid date: " << line << std::endl;
+			else if (value < 0)
+				std::cout << "Error: not a positive number" << std::endl;
 			else if (value > 1000)
-				std::cout << "Error: too large number\n";
+				std::cout << "Error: too large number" << std::endl;
 			else {
 				std::multimap<std::string, float>::iterator ite = _data.upper_bound(date);
 				std::cout << date << " => " << value << " = " << (--ite)->second * value <<std::endl;
 			}
 		}
-		else
-			std::cout << "Error: bad input => " + line[it] + "\n";
-		it++;
+		else if (line.length())
+			std::cout << "Error: bad input => " + line << std::endl;
 	}
 }
