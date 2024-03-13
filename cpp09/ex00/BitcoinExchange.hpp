@@ -3,12 +3,9 @@
 
 #include <iostream>
 #include <vector>
-#include <map>
 #include <iterator>
 #include <fstream>
 #include <sstream>
-
-#define MAX 131072
 
 class BitcoinExchange {
 	public :
