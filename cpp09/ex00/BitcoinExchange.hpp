@@ -1,8 +1,8 @@
-#ifndef MUTANTSTACK
-# define MUTANTSTACK
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
 #include <iostream>
-#include <vector>
+#include <map>
 #include <iterator>
 #include <fstream>
 #include <sstream>

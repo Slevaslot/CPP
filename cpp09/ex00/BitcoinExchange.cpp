@@ -3,7 +3,10 @@
 BitcoinExchange::BitcoinExchange() {
 	std::ifstream file("data.csv");
 	if (!file)
+	{
 		std::cerr << "Error while opening data.csv file" << std::endl;
+		return;
+	}
 	std::string line;
 	bool if_first = true;
 	while (getline(file, line)) {
@@ -46,7 +49,7 @@ bool isValidDate(int year, int month, int day) {
 	else if (month == 4 || month == 6 || month == 9 || month == 11)
     	return day >= 1 && day <= 30;
     else if (month == 2)
-      return (year % 4 == 0) ? (day >= 1 && day <= 28) : (day >= 1 && day <= 29);
+      return (year % 4 == 0) ? (day >= 1 && day <= 29) : (day >= 1 && day <= 28);
   return false;
 }
 
